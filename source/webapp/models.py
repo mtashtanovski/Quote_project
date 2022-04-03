@@ -30,3 +30,11 @@ class Quote(models.Model):
         auto_now_add=True,
         verbose_name="Дата создания"
     )
+
+    def __str__(self):
+        return f"{self.author}: {self.text}"
+
+    class Meta:
+        db_table = 'quotes'
+        verbose_name = 'Цитата'
+        verbose_name_plural = 'Цитаты'
