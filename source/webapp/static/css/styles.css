@@ -1,0 +1,16 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background: #f9f7f3;
+}
+
+.partials-input input {
+    width: 300px;
+    border: 1px solid #6ebef8;
+    border-radius: 5px;
+}
+
+.partials-input input:focus {
+    outline: none !important;
+    border: none;
+    box-shadow: 0 0 10px #6ebef8;
+}
