@@ -3,7 +3,16 @@
 
 {% block title %}Главная{% endblock title %}
 
-{% block nav %}{% endblock nav %}
+{% block nav %}
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" type="submit" aria-current="page" onclick="getList()">Главная</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Добавить цитату</a>
+        </li>
+    {% endif %}
+{% endblock nav %}
 
 {% block content %}
 
@@ -11,7 +20,27 @@
         <h3>Цитаты</h3>
     </div>
 
-    <div class="container" style="border: 1px solid cornflowerblue">
+    <div class="container" id="quotes-list" style="border: 1px solid cornflowerblue">
 
     </div>
 {% endblock content %}
+{% block scripts %}
+    <script type="text/javascript">
+        function getList(url){
+            $.ajax({
+                type : 'GET',
+                url  : 'http://localhost:8000/api/v1/quotes/',
+                headers: {"Authorisation": "Token 2e4422612058d9bbfb1bcf49404e03fdd8d3c706"},
+
+                dataType: "json",
+                contentType: 'application/json',
+                success :  function(response){
+                    console.log(response)
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            });
+        }
+    </script>
+{% endblock scripts %}
