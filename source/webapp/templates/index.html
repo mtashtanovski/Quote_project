@@ -6,10 +6,10 @@
 {% block nav %}
     {% if user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link" type="submit" aria-current="page" onclick="getList()">Главная</a>
+            <a class="nav-link" type="submit" aria-current="page">Главная</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Добавить цитату</a>
+            <a class="nav-link" type="submit" aria-current="page" href="#">Добавить цитату</a>
         </li>
     {% endif %}
 {% endblock nav %}
@@ -25,22 +25,23 @@
     </div>
 {% endblock content %}
 {% block scripts %}
-    <script type="text/javascript">
-        function getList(url){
-            $.ajax({
-                type : 'GET',
-                url  : 'http://localhost:8000/api/v1/quotes/',
-                headers: {"Authorisation": "Token 2e4422612058d9bbfb1bcf49404e03fdd8d3c706"},
-
-                dataType: "json",
-                contentType: 'application/json',
-                success :  function(response){
-                    console.log(response)
-                },
-                error: function (response) {
-                    console.log(response)
-                }
-            });
-        }
-    </script>
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+{#    <script type="text/javascript">#}
+{#        function getList(url){#}
+{#            $.ajax({#}
+{#                type : 'GET',#}
+{#                url  : 'http://localhost:8000/api/v1/quotes/',#}
+{#                headers: {"Authorisation": "Token 2e4422612058d9bbfb1bcf49404e03fdd8d3c706"},#}
+{##}
+{#                dataType: "json",#}
+{#                contentType: 'application/json',#}
+{#                success :  function(response){#}
+{#                    console.log(response)#}
+{#                },#}
+{#                error: function (response) {#}
+{#                    console.log(response)#}
+{#                }#}
+{#            });#}
+{#        }#}
+{#    </script>#}
 {% endblock scripts %}
